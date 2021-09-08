@@ -12,8 +12,9 @@ void intersection_of_arrays(int*, int*);
 void unit_arrays(int*, int*);
 
 //нужен для перемножения матриц
-void multiply_matrix();
+void multiply_matrix(int**, int fm_rows, int fm_cols, int **, int sm_rows, int sm_cols);
 
 void sum_matrix(int**, int**, int, int);
 
-void create_matrix(int, int);
+
+int** create_matrix(int, int);

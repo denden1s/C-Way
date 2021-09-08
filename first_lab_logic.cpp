@@ -2,6 +2,19 @@
 #include "arrays_head.h"
 using namespace std;
 
+void view_matrix(int** matrix, int rows, int cols, string desc)
+{
+	cout << desc << endl;
+	for (size_t i = 0; i < rows; i++)
+	{
+		for (size_t j = 0; j < cols; j++)
+		{
+			cout << matrix[i][j] << "\t";
+		}
+		cout << endl;
+	}
+}
+
 void intersection_of_arrays(int* first_arr, int* second_arr)
 {
 	int* arr;
@@ -63,7 +76,6 @@ void create_array(int length)
 	delete [] arr;
 }
 
-//ðàáîòàåò
 void unit_arrays(int* first_arr, int* second_arr)
 {
 	int* result_arr;
@@ -86,11 +98,11 @@ void unit_arrays(int* first_arr, int* second_arr)
 	{
 		cout << result_arr[i];
 	}
-	delete []result_arr;
+	delete[] result_arr;
 }
 
 
-void create_matrix(int rows, int cols)
+int** create_matrix(int rows, int cols)
 {
 	int** matrix;
 	matrix = new int*[rows];
@@ -103,24 +115,26 @@ void create_matrix(int rows, int cols)
 	{
 		for (size_t j = 0; j < cols; j++)
 		{
-			matrix[i][j] = rand();
+			matrix[i][j] = rand() - rand() / 1000;
 		}
 	}
+	return matrix;
 	for (size_t i = 0; i < rows; i++)
 	{
-		for (size_t j = 0; j < cols; j++)
-		{
-			cout << matrix[i][j] << "\t";
-		}
-		cout << endl;
+		delete[] matrix[i];
 	}
 	delete[] matrix;
 }
+
+
 
 void sum_matrix(int** f_matrix, int** s_matrix, int rows, int cols)
 {
 	int** result_matrix;
 	result_matrix = new int* [rows];
+
+	view_matrix(f_matrix, rows, cols, "First matrix:");
+	view_matrix(s_matrix, rows, cols, "Second matrix:");
 	for (size_t i = 0; i < rows; i++)
 	{
 		result_matrix[i] = new int[cols];
@@ -131,8 +145,49 @@ void sum_matrix(int** f_matrix, int** s_matrix, int rows, int cols)
 		for (size_t j= 0; j < cols; j++)
 		{
 			result_matrix[i][j] = f_matrix[i][j] + s_matrix[i][j];
-			cout << result_matrix[i][j];
+			cout << result_matrix[i][j] << "\t";
 		}
 		cout << endl;
 	}
+	for (size_t i = 0; i < rows; i++)
+	{
+		delete[] result_matrix[i];
+	}
+	delete[] result_matrix;
+}
+
+void multiply_matrix(int** f_matrix, int fm_rows, int fm_cols, int** s_matrix, int sm_rows, int sm_cols)
+{
+	int** result_matrix;
+	int rows = fm_rows;
+	int cols = fm_cols < sm_cols ? fm_cols : sm_cols;
+	//êîëè÷åñòâî ñòðîê ìàòðèöû 
+	view_matrix(f_matrix, fm_rows, fm_cols, "First matrix:");
+	view_matrix(s_matrix, sm_rows, sm_cols, "Second matrix:");
+	result_matrix = new int*[rows];
+	for (size_t i = 0; i < rows; i++)
+	{
+		result_matrix[i] = new int[cols];
+	}
+	for (size_t i = 0; i < rows; i++)
+	{
+		for (size_t j = 0; j < cols; j++)
+		{
+			result_matrix[i][j] = 0;
+		}
+	}
+	for (size_t q = 0; q < rows; q++)
+	{
+		for (size_t a = 0; a < cols; a++)
+		{
+			cout << "result m[" << a << "," << q << "]" << " = ";
+			for (size_t i = 0; i < cols+1; i++)
+			{
+				cout << f_matrix[a][i] << " * " << s_matrix[i][q] << "\n";
+				//ÐÀÁÎÒÀÅÒ ÍÅ ÍÀ ÂÑÅÕ ÂÀÐÈÀÍÒÀÕ ÌÀÒÐÈÖ (1,3) È (3,1)
+				result_matrix[a][q] += f_matrix[a][i] * s_matrix[i][q];
+			}
+		}
+	}
+	view_matrix(result_matrix, rows, cols, "Ðåçóëüòèðóþùàÿ ìàòðèöà:");
 }
