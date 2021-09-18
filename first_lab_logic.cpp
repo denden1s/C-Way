@@ -119,11 +119,12 @@ int** create_matrix(int rows, int cols)
 		}
 	}
 	return matrix;
-	for (size_t i = 0; i < rows; i++)
+	//Íå âûçûâàåòñÿ
+	/*for (size_t i = 0; i < rows; i++)
 	{
 		delete[] matrix[i];
 	}
-	delete[] matrix;
+	delete[] matrix;*/
 }
 
 
@@ -158,36 +159,49 @@ void sum_matrix(int** f_matrix, int** s_matrix, int rows, int cols)
 
 void multiply_matrix(int** f_matrix, int fm_rows, int fm_cols, int** s_matrix, int sm_rows, int sm_cols)
 {
-	int** result_matrix;
-	int rows = fm_rows;
-	int cols = fm_cols < sm_cols ? fm_cols : sm_cols;
-	//êîëè÷åñòâî ñòðîê ìàòðèöû 
-	view_matrix(f_matrix, fm_rows, fm_cols, "First matrix:");
-	view_matrix(s_matrix, sm_rows, sm_cols, "Second matrix:");
-	result_matrix = new int*[rows];
-	for (size_t i = 0; i < rows; i++)
+	if (fm_cols == sm_rows)
 	{
-		result_matrix[i] = new int[cols];
-	}
-	for (size_t i = 0; i < rows; i++)
-	{
-		for (size_t j = 0; j < cols; j++)
+		int** result_matrix;
+		int rows = fm_rows;
+		int cols = fm_cols < sm_cols ? fm_cols : sm_cols;
+		//êîëè÷åñòâî ñòðîê ìàòðèöû 
+		view_matrix(f_matrix, fm_rows, fm_cols, "First matrix:");
+		view_matrix(s_matrix, sm_rows, sm_cols, "Second matrix:");
+		result_matrix = new int* [rows];
+		for (size_t i = 0; i < rows; i++)
 		{
-			result_matrix[i][j] = 0;
+			result_matrix[i] = new int[cols];
 		}
-	}
-	for (size_t q = 0; q < rows; q++)
-	{
-		for (size_t a = 0; a < cols; a++)
+		for (size_t i = 0; i < rows; i++)
 		{
-			cout << "result m[" << a << "," << q << "]" << " = ";
-			for (size_t i = 0; i < cols+1; i++)
+			for (size_t j = 0; j < cols; j++)
 			{
-				cout << f_matrix[a][i] << " * " << s_matrix[i][q] << "\n";
-				//ÐÀÁÎÒÀÅÒ ÍÅ ÍÀ ÂÑÅÕ ÂÀÐÈÀÍÒÀÕ ÌÀÒÐÈÖ (1,3) È (3,1)
-				result_matrix[a][q] += f_matrix[a][i] * s_matrix[i][q];
+				result_matrix[i][j] = 0;
 			}
 		}
+		for (size_t q = 0; q < rows; q++)
+		{
+			for (size_t a = 0; a < cols; a++)
+			{
+				cout << "result m[" << a << "," << q << "]" << " = ";
+				for (size_t i = 0; i < cols + 1; i++)
+				{
+					cout << f_matrix[a][i] << " * " << s_matrix[i][q] << "\n";
+					//ÐÀÁÎÒÀÅÒ ÍÅ ÍÀ ÂÑÅÕ ÂÀÐÈÀÍÒÀÕ ÌÀÒÐÈÖ (1,3) È (3,1)
+					result_matrix[a][q] += f_matrix[a][i] * s_matrix[i][q];
+				}
+			}
+		}
+		view_matrix(result_matrix, rows, cols, "Result matrix:");
+		for (size_t i = 0; i < rows; i++)
+		{
+			delete[] result_matrix[i];
+		}
+		delete[] result_matrix;
 	}
-	view_matrix(result_matrix, rows, cols, "Ðåçóëüòèðóþùàÿ ìàòðèöà:");
+	else
+	{
+		cout << "For multiply matrix need to execute this rule: \"Count of cols in first matrix need " 
+			<<"to equals count of second matrix rows\"";
+	}
 }
