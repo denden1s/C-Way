@@ -123,7 +123,7 @@ Matrix* Matrix::SumMatrix(Matrix f_matrix, Matrix s_matrix)
 //Need to fill matrix by created array[][]
 void Matrix::FillByMatrix(int** _matrix, int _rows, int _cols)
 {
-	//Проблемы
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (rows == _rows && cols == _cols)
 	{
 		for (size_t i = 0; i < rows; i++)
@@ -215,7 +215,7 @@ Array* Array::IntersectionOfArrays(Array f_array, Array s_array)
 	Array* result_object;
 	int* arr;
 	int counter = 0;
-	//проверка возможности пересечения
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	for (size_t i = 0; i < f_array.length; i++)
 	{
 		for (size_t j = 0; j < s_array.length; j++)
@@ -226,7 +226,7 @@ Array* Array::IntersectionOfArrays(Array f_array, Array s_array)
 			}
 		}
 	}
-	// counter = 0 если элементы не пересекаются
+	// counter = 0 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (counter != 0)
 	{
 		result_object = new Array(counter);
