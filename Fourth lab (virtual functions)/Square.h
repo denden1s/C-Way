@@ -20,7 +20,7 @@ public:
 	{
 		std::cout << "SetDots in square" << std::endl;
 	}
-	string GetType() override
+	string GetType()
 	{
 		return "Square";
 	}

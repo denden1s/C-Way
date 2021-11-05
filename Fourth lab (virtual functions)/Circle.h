@@ -20,7 +20,7 @@ public:
 	{
 		std::cout << "SetDots in circle" << std::endl;
 	}
-	string GetType() override
+	string GetType()
 	{
 		return "Circle";
 	}

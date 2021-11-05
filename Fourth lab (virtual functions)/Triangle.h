@@ -24,7 +24,7 @@ public:
     {
         std::cout << "SetDots Triangle" << endl;
     }
-    string GetType() override
+    string GetType()
     {
         return "Triangle";
     }
