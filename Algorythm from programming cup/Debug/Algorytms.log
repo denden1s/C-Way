@@ -1,0 +1,15 @@
+﻿  Algorytms.cpp
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(24,30): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(32,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(56,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(59,30): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(63,34): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(68,31): warning C4018: >=: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(72,34): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(76,38): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(86,34): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(97,38): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(102,35): warning C4018: >=: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(112,40): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Денис\source\repos\Algorytms\Algorytms.cpp(123,40): warning C4018: <: несоответствие типов со знаком и без знака
+  Algorytms.vcxproj -> C:\Users\Денис\source\repos\Algorytms\Debug\Algorytms.exe
