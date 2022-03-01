@@ -1,6 +1,7 @@
 using namespace std;
 #include <iostream>
 #include<iomanip>
+#include <string>
 
 class dot
 {
@@ -84,14 +85,11 @@ public:
 			lines[i]->end->move(posx, posy);
 		}
 	}
-
 };
 
 int main()
 {
+	int flag = 0;
 	setlocale(LC_ALL, "Russian");
 	square sq(0, 0, 10);
-	sq.viewSquare();
-	sq.moveSquare(10, 10);
-	sq.viewSquare();
 }
