@@ -93,6 +93,78 @@ void Read()
   else throw;
 }
 
+void BinaryRead()
+{
+  ifstream fileToRead;
+  //проверка существования файла
+  if(!IsEmpty())
+  {
+    while(!Circles.empty())
+    {
+      Circles.pop_back();
+    }
+    fileToRead.open(fileName, ios_base::binary);
+    int index = 0;
+    int arr[elements];
+    int buf = 0;
+    Circle circle;
+    while(!fileToRead.eof())
+    {
+      if(index < elements)
+      {
+        fileToRead.read((char*)&buf, sizeof(int));
+        arr[index] = buf;
+        index++;
+      }
+      else
+      {
+        circle.x = arr[0];
+        circle.y = arr[1];
+        circle.r = arr[2];
+        Circles.push_back(circle);
+        index = 0;
+      }
+    }
+  }
+}
+
+void BinaryWrite(Circle circle)
+{
+   ofstream fileToWrite;
+  if(IsEmpty())
+  {
+    //создание файла
+    ofstream file(fileName, ios_base::binary);
+    file.write((char*)&circle.x, sizeof(int));
+    file.write((char*)&circle.y, sizeof(int));
+    file.write((char*)&circle.r, sizeof(int));
+    cout << "Create file" << endl;
+    file.close();
+  }
+  else
+  {
+    cout << "0 - добавление в конец файла, 1 - перезапись" << endl;
+    int flag = -1;
+    cin >> flag;
+    switch (flag)
+    {
+    case 0:
+      fileToWrite.open(fileName, ios_base::app | ios_base::binary);
+      break;
+    case 1: 
+      fileToWrite.open(fileName, ios_base::trunc | ios_base::binary);
+      break;
+    default:
+      throw;
+      break;
+    }
+      fileToWrite.write((char*)&circle.x, sizeof(int));
+      fileToWrite.write((char*)&circle.y, sizeof(int));
+      fileToWrite.write((char*)&circle.r, sizeof(int));
+      fileToWrite.close();
+  }
+}
+
 void View()
 {
   cout << "X\tY\tr\t"<< endl;
@@ -118,10 +190,10 @@ int main()
           Circle circle;
           cout << "Введите x, y, z" << endl;
           cin >> circle.x >> circle.y >> circle.r;
-          Write(circle);
+          BinaryWrite(circle);
           break;
         case 2: 
-          Read();
+          BinaryRead();
           View();
           break;
         default:
